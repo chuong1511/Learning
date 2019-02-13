@@ -1,8 +1,9 @@
-﻿using System;
+﻿using ChuongForums.Data;
+using System;
 
 namespace ChuongForums.Service
 {
-    public class ForumService
+    public class ForumService : IForum
     {
     }
 }
