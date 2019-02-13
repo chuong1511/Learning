@@ -1,5 +1,6 @@
 ﻿using ChuongForums.Data;
 using ChuongForums.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,6 +9,12 @@ namespace ChuongForums.Service
 {
     public class ForumService : IForum  
     {
+        private readonly ApplicationDbContext _context;
+
+        public ForumService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public Task Create(Forum forum)
         {
             throw new NotImplementedException();
@@ -20,7 +27,7 @@ namespace ChuongForums.Service
 
         public IEnumerable<Forum> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Forums.Include(forum => forum.Posts);
         }
 
         public IEnumerable<ApplicationUser> GetAllActiveUsers()
