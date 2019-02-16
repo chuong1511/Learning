@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ChuongForums.Services;
 using ChuongForums.Data;
 using ChuongForums.Data.Models;
+using ChuongForums.Service;
 
 namespace ChuongForums
 {
@@ -32,7 +33,7 @@ namespace ChuongForums
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
-
+            services.AddScoped<IForum, ForumService>();
             services.AddMvc();
         }
 

@@ -3,6 +3,7 @@ using ChuongForums.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ChuongForums.Service
@@ -37,7 +38,13 @@ namespace ChuongForums.Service
 
         public Forum GetById(int id)
         {
-            throw new NotImplementedException();
+
+            return _context.Forums.Where(f=>f.Id == id)
+                .Include(f => f.Posts)
+                    .ThenInclude(f => f.User)
+                .Include(f => f.Posts)
+                    .ThenInclude(f => f.Replies)
+                    .ThenInclude(r => r.User).FirstOrDefault();
         }
 
         public Task UpdateForumDescription(int forumId, string newDescription)

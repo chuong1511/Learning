@@ -11,14 +11,14 @@ using System;
 namespace ChuongForums.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190209175146_Add initial entity model")]
-    partial class Addinitialentitymodel
+    [Migration("20190213162555_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
+                .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("ChuongForums.Data.Models.ApplicationUser", b =>
